@@ -16,7 +16,7 @@ profile = "black"
 
 [tool.poetry]
 name = "syndiffix"
-version = "1.0.2"
+version = "1.0.3"
 description = "Python implementation of the SynDiffix synthetic data generation mechanism."
 authors = ["Open Diffix <hello@open-diffix.org>"]
 readme = "README.md"
@@ -35,6 +35,8 @@ appdirs = "^1.4.4"
 scipy = "^1.9"
 types-appdirs = "^1.4.3.5"
 jupyter = "^1.1.1"
+pyarrow = "^17.0.0"
+fastparquet = "^2024.5.0"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.4.1"
