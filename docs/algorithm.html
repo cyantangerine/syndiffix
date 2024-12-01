@@ -1,0 +1,617 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>algorithm</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='step-by-step-description-of-the-algorithm'><span>Step-by-step description of the algorithm</span></h1><p><span>The following steps refer to the </span><code>anonymized (noisy) count</code><span> whenever a </span><code>count</code><span> is mentioned</span>
+<span>(the </span><code>true count</code><span> is never used directly).</span></p><h2 id='casting-to-real'><span>Casting to real</span></h2><p><span>Before forest building is conducted, preliminary casting of all values to reals has to be done:</span></p><ul><li><strong><span>null</span></strong><span> - see </span><a href='#forest-building'><span>Forest building</span></a></li><li><strong><span>boolean</span></strong><span> - false becomes 0.0, true becomes 1.0</span></li><li><strong><span>integer</span></strong><span> - natural cast to real</span></li><li><strong><span>real</span></strong><span> - kept intact (non-finite reals aren&#39;t currently handled)</span></li><li><strong><span>string</span></strong><span> - a sorted array with all of the distinct values is first created, then each value gets assigned</span>
+<span>the index of its position in the array</span></li><li><strong><span>timestamp</span></strong><span> - becomes seconds since 1800-01-01 00:00:00 UTC</span></li></ul><h2 id='forest-building'><span>Forest building</span></h2><p><span>There are two types of nodes: branches and leaves. Both kinds store an array of ranges, an array of subnodes, and a stub flag.</span>
+<span>A branch has </span><code>2^tree_dimensions</code><span> children, some of which can be missing. A leaf stores the list of rows matching its ranges.</span></p><ul><li><p><span>For each row:</span></p><ul><li><p><span>For each column:</span></p><ul><li><span>Compute the range of the values space.</span></li></ul></li></ul></li><li><p><span>For each column:</span></p><ul><li><span>Map nulls to a value outside twice the actual min or max boundary,</span>
+<span>to prevent leaking low-count nulls into the bottom or top values range.</span></li><li><span>Snap the range size to the next power-of-two.</span></li><li><span>Align the range boundaries to the snapped size.</span></li></ul></li><li><p><span>For k in 1..length(columns):</span></p><ul><li><p><span>For each combination of k columns:</span></p><ul><li><p><span>Build the tree root for the column combination.</span></p></li><li><p><span>For each row:</span></p><ul><li><p><span>Find target leaf node. If one doesn&#39;t exist:</span></p><ul><li><p><span>Create a new leaf node by halfing the ranges of the parent.</span></p></li><li><p><span>Fill the subnodes list from the lower dimensional trees.</span></p><ul><li><span>The subnodes are the children of parent&#39;s subnodes with the same corresponding ranges as the current node.</span></li></ul></li><li><p><span>Determine if the node is a stub.</span></p><ul><li><p><span>A node is a stub if all of its subnodes either:</span></p><ul><li><span>are missing;</span></li><li><span>fail the range / singularity threshold;</span></li><li><span>are also stubs themselves.</span></li></ul></li></ul></li></ul></li><li><p><span>Add the row to its matching leaf node.</span></p></li><li><p><span>If target node is not a singularity, passes LCF, is not a stub, and (below depth threshold or over row fraction):</span></p><ul><li><span>Convert the target leaf node to a branch node.</span></li><li><span>Add the previously stored rows to the newly created node.</span></li></ul></li></ul></li><li><p><span>If k = 1:</span></p><ul><li><span>Push the root down as long as one of its children fails LCF.</span></li><li><span>Add the rows from the previously dropped low-count nodes to the remaining tree.</span></li><li><span>Update the snapped range for the corresponding dimension.</span></li></ul></li></ul></li></ul></li></ul><h3 id='bucket-harvesting'><span>Bucket harvesting</span></h3><p><span>A bucket has an array of ranges (one for each dimension), and a noisy row count.</span>
+<span>When creating a bucket from a node, use the node&#39;s singularity ranges at its singularity dimensions</span>
+<span>and its snapped ranges elsewhere.</span></p><ul><li><p><span>Do a bottom-up traversal of the forest&#39;s root. At each node:</span></p><ul><li><p><span>If the node is a leaf:</span></p><ul><li><p><span>If the node fails LCF:</span></p><ul><li><span>Return nothing.</span></li></ul></li><li><p><span>If the node is a singularity:</span></p><ul><li><span>Return a bucket from node&#39;s single value.</span></li></ul></li><li><p><span>If in 1-dimensional node:</span></p><ul><li><span>Return a bucket from node&#39;s ranges.</span></li></ul></li><li><p><span>Else:</span></p><ul><li><span>Return the refined buckets from node&#39;s ranges and subnodes.</span></li></ul></li></ul></li><li><p><span>Else:</span></p><ul><li><p><span>Gather all buckets from child nodes.</span></p></li><li><p><span>If there are fewer rows in the children&#39;s buckets than half of the current node&#39;s rows:</span></p><ul><li><p><span>If in 1-dimensional node:</span></p><ul><li><span>Return a bucket from node&#39;s ranges.</span></li></ul></li><li><p><span>Else:</span></p><ul><li><span>Generate </span><code>current.count - children.count</code><span> refined buckets from node&#39;s ranges and subnodes.</span></li><li><span>Append the refined buckets to the previously harvested buckets.</span></li><li><span>Return the resulting buckets.</span></li></ul></li></ul></li><li><p><span>Else:</span></p><ul><li><span>Adjust the counts of the buckets so that their sum matches the count of the current node.</span></li><li><span>Return the resulting buckets.</span></li></ul></li></ul></li></ul></li></ul><h4 id='bucket-refinement'><span>Bucket refinement</span></h4><ul><li><p><span>Gather the sub-dimensional buckets. For each possible subnode:</span></p><ul><li><p><span>If the subnode&#39;s combination corresponds to a singularity:</span></p><ul><li><span>Return a bucket with singularity ranges for it.</span></li></ul></li><li><p><span>If the subnode exists:</span></p><ul><li><span>Harvest and return the buckets for it.</span></li></ul></li><li><p><span>Else:</span></p><ul><li><span>Return an empty list.</span></li></ul></li></ul></li><li><p><span>If insufficient buckets for a subnode:</span></p><ul><li><span>Return the input bucket.</span></li></ul></li><li><p><span>Compute the possible cumulative ranges for each subnode and dimension.</span></p></li><li><p><span>Compute the smallest ranges for all dimensions.</span></p></li><li><p><span>Compact smallest ranges by excluding any low-count half-ranges.</span></p></li><li><p><span>Gather the possible per-dimension ranges which are inside the smallest ranges.</span></p></li><li><p><span>Drop the sub-dimensional buckets which are outside the smallest ranges.</span></p></li><li><p><span>If insufficient ranges:</span></p><ul><li><span>Return the input bucket.</span></li></ul></li><li><p><span>Else:</span></p><ul><li><span>Generate new buckets by matching the remaining possible ranges of a column with</span>
+<span>their corresponding sub-dimensional buckets using a deterministic random shuffle.</span></li></ul></li></ul><h3 id='microdata-generation'><span>Microdata generation</span></h3><ul><li><p><span>For each harvested bucket:</span></p><ul><li><p><span>For 1..bucket.count:</span></p><ul><li><p><span>For each range in the bucket:</span></p><ul><li><p><span>Generate a random float value inside the range. In the case of a </span><strong><span>string</span></strong><span> column, the upper edge of the range must not exceed the distinct values sorted array.</span></p></li><li><p><span>Cast the generated value back to the corresponding column type.</span></p><ul><li><p><span>In the case of </span><strong><span>string</span></strong><span> columns:</span></p><ul><li><p><span>If the range is a singularity:</span></p><ul><li><span>Return the exact value.</span></li></ul></li><li><p><span>Else:</span></p><ul><li><p><span>If the random value is a singularity in the corresponding 1-dimensional tree and passes LCF, return the exact value.</span></p></li><li><p><span>Else:</span></p><ul><li><span>Return the common prefix of the range, plus </span><code>*</code><span>, plus a random integer from inside the range.</span></li></ul></li></ul></li></ul></li></ul></li></ul></li><li><p><span>Return a synthetic row from the generated values.</span></p></li></ul></li></ul></li></ul><h3 id='clustering'><span>Clustering</span></h3><p><span>When input data has a large number of dimensions, columns are divided into clusters.</span>
+<span>The solver searches for permutations that build clusters with best overall dependence between columns.</span></p><h4 id='solver'><span>Solver</span></h4><ul><li><p><span>Current permutation &lt;- {1..dimensions}.</span></p></li><li><p><span>Best solution &lt;- quality of initial permutation.</span></p></li><li><p><span>Temperature &lt;- initial temperature.</span></p></li><li><p><span>While temperature &gt; minimum temperature:</span></p><ul><li><p><span>New permutation &lt;- swap a random pair in current permutation.</span></p></li><li><p><span>If quality of new permutation is better than quality of current permutation,</span></p></li><li><p><span>Or accept with some probability depending on temperature:</span></p><ul><li><span>Current permutation &lt;- new permutation.</span></li></ul></li><li><p><span>If quality of new permutation better than quality of best permutation:</span></p><ul><li><span>Best solution &lt;- current permutation.</span></li></ul></li><li><p><span>Lower temperature based on a curve function.</span></p></li></ul></li><li><p><span>Return clusters built from best solution.</span></p></li></ul><h4 id='building-clusters-from-a-permutation'><span>Building clusters from a permutation</span></h4><p><span>Each cluster has a maximum (configurable) weight.</span>
+<span>A column&#39;s weight is computed as </span><code>1 + sqrt(max(1, entropy))</code><span>.</span></p><ul><li><p><span>Read columns in the permutation from left to right.</span></p></li><li><p><span>Keep adding columns to the initial cluster until:</span></p><ul><li><span>The initial cluster is full,</span></li><li><span>Or the next column has average dependence score (to the cluster&#39;s columns) below merge threshold.</span></li></ul></li><li><p><span>Rest of columns are added to derived clusters. Initially derived clusters are an empty list.</span></p></li><li><p><span>For each remaining column (left to right):</span></p><ul><li><p><span>Find all derived clusters where:</span></p><ul><li><span>Average dependence score is above merge threshold.</span></li><li><span>Cluster&#39;s current weight + this column&#39;s weight do not exceed 70% of max cluster weight.</span></li></ul></li><li><p><span>Pick cluster with best average score.</span></p></li><li><p><span>If such cluster exists:</span></p><ul><li><span>Add column to cluster.</span></li></ul></li><li><p><span>Else:</span></p><ul><li><span>Start a new cluster with this column.</span></li></ul></li></ul></li><li><p><span>For all derived clusters (earliest to latest):</span></p><ul><li><p><span>Look back at the columns that are available so far (including initial cluster).</span></p></li><li><p><span>Sort available columns by average dependence score to the derived columns (best to worst).</span></p></li><li><p><span>Always use first column from this list as a stitch column.</span></p></li><li><p><span>For each remaining column:</span></p><ul><li><p><span>If cluster has available space and column&#39;s average dependence score is above threshold:</span></p><ul><li><span>Add stitch column to cluster.</span></li></ul></li></ul></li></ul></li><li><p><span>Return initial cluster and derived clusters.</span></p></li></ul><p><span>If we have a main column, it will always appear in the initial cluster, and always as the first stitch column in derived clusters.</span></p><h4 id='measuring-clustering-quality'><span>Measuring clustering quality</span></h4><p><span>Clustering quality is the average unsatisfied dependence between pairs of columns.</span>
+<span>A lower value is better because more dependencies are preserved.</span></p><ul><li><p><span>Create a copy of the dependence matrix.</span></p></li><li><p><span>For each cluster in clusters:</span></p><ul><li><p><span>For each possible pair col1, col2 in cluster:</span></p><ul><li><span>Set matrix&#39;s cells (col1,col2) to zero and (col2,col1) to zero.</span></li></ul></li></ul></li><li><p><span>Take the sum of the matrix, excluding values in the diagonal.</span></p></li><li><p><span>Return </span><code>sum / (2 * num_columns)</code><span>.</span></p></li></ul><h4 id='measuring-dependence-between-columns'><span>Measuring dependence between columns</span></h4><p><span>Dependence between columns is a univariate measure that returns a score from 0.0 to 1.0.</span>
+<span>SynDiffix uses a modified version of chi2 dependence measure.</span>
+<span>The dependence matrix is the num_columns x num_columns matrix with all pairs of scores.</span></p><h3 id='stitching'><span>Stitching</span></h3><p><span>Stitching is the process of combining microdata from two or more clusters into a single table.</span></p><ul><li><p><span>Initial microtable &lt;- synthesize initial cluster.</span></p></li><li><p><span>For each cluster in derived clusters:</span></p><ul><li><span>Produce synthetic data for cluster.</span></li><li><span>microtable &lt;- stitch current microtable with cluster&#39;s microdata.</span></li></ul></li><li><p><span>Return the complete microtable.</span></p></li></ul><p><span>By &quot;left rows&quot; we refer to the current microtable, and &quot;right rows&quot; refers to the upcoming cluster&#39;s microtable.</span></p><h4 id='patching'><span>Patching</span></h4><p><span>If the cluster has no stitch columns, we perform a </span><em><span>patch</span></em><span>:</span></p><ul><li><p><span>Randomly shuffle right rows.</span></p></li><li><p><span>Align the number of right rows to be that of left rows.</span></p><ul><li><span>If both sides have equal count of rows, do nothing.</span></li><li><span>If right has fewer rows, repeat </span><code>left.count - right.count</code><span> random rows from the right side.</span></li><li><span>If right has more, drop </span><code>right.count - left.count</code><span> last rows from the right side.</span></li></ul></li><li><p><span>Zip left and right rows:</span></p><ul><li><span>For each pair, produce a microdata row that combines columns of both sides.</span></li></ul></li><li><p><span>Return list of combined rows.</span></p></li></ul><p><span>For clusters with stitch columns, we perform a recursive </span><em><span>stitch</span></em><span>.</span></p><h4 id='recursive-stitching'><span>Recursive stitching</span></h4><ul><li><p><span>Preparation step</span></p><ul><li><span>Sort stitch (common) rows from lowest entropy to highest.</span></li><li><span>For each stitch column, start from the complete 1-dim range of that column.</span></li><li><span>Start the sorting process from the first stitch column in the sorted list.</span></li></ul></li><li><p><span>Sort both left and right sides by the current sort column.</span></p></li><li><p><span>Find the midpoint of sort column&#39;s 1-dim range.</span></p></li><li><p><span>Split both left and right rows based on the midpoint.</span></p><ul><li><span>We call rows that have a value of greater than or equal to the midpoint the &quot;upper half&quot;.</span></li><li><span>Rows that have value less than the midpoint are called the &quot;lower half&quot;</span></li></ul></li><li><p><span>If the lower halves of opposing microtables have a roughly equal number of rows, and same for upper halves:</span></p><ul><li><span>Accept the split.</span></li><li><span>Move to the next sort column in the list. Wrap around if necessary.</span></li><li><span>Recursively stitch lower left with lower right. The nested stitch sees only the lower half of the 1-dim range.</span></li><li><span>Recursively stitch upper left with upper right. The nested stitch sees only the upper half of the 1-dim range.</span></li></ul></li><li><p><span>Else:</span></p><ul><li><p><span>Reject the split.</span></p></li><li><p><span>Move to the next sort column in the list. Wrap around if necessary.</span></p></li><li><p><span>If all sort columns were rejected consecutively:</span></p><ul><li><span>Merge left and right.</span></li><li><span>Emit merged rows.</span></li></ul></li><li><p><span>Else:</span></p><ul><li><span>Recursively stitch left and right rows.</span></li></ul></li></ul></li></ul><h4 id='microtable-merging'><span>Microtable merging</span></h4><ul><li><p><span>Randomly shuffle left and right rows.</span></p></li><li><p><span>Compute the average length of rows between left and right side.</span></p></li><li><p><span>Align left and right rows to that length.</span></p><ul><li><span>If a side has fewer rows, extend by randomly repeating </span><code>avg_rows - current</code><span> rows.</span></li><li><span>If a side has more rows, drop the last </span><code>current - avg_rows</code><span> rows.</span></li></ul></li><li><p><span>Perform a multi level sort on left and right rows. Use the same sort hierarchy as in the stitching phase.</span></p></li><li><p><span>For </span><code>i</code><span> &lt;- </span><code>1</code><span> to </span><code>avg_rows</code><span>:</span></p><ul><li><p><span>Merge left and right rows by taking distinct columns from both sides.</span></p></li><li><p><span>For the shared stitch columns:</span></p><ul><li><p><span>If either side is a &quot;stitch owner&quot;, always use that side&#39;s stitch columns.</span></p></li><li><p><span>Else:</span></p><ul><li><span>if </span><code>i</code><span> is odd, use the stitch columns from the left side.</span></li><li><span>If </span><code>i</code><span> is even, use the stitch columns from the right side.</span></li></ul></li></ul></li><li><p><span>Add the merged row to the resulting microtable.</span></p></li></ul></li><li><p><span>Return the microtable.</span></p></li></ul><h4 id='clustering-for-ml-targets'><span>Clustering for ML targets</span></h4><p><span>When building microdata for an ML target column, we run a simpler version of the cluster builder.</span></p><ul><li><p><span>Use sci-kit learn to find the best </span><code>k</code><span> ML features (columns with high ML relevance) for the target column.</span></p></li><li><p><span>Create initial cluster which at first contains only the target column.</span></p></li><li><p><span>Set initial cluster as the current cluster.</span></p></li><li><p><span>For each feature in k-features (ordered by importance, highest to lowest):</span></p><ul><li><p><span>If current cluster has available space:</span></p><ul><li><span>Add feature to current cluster.</span></li></ul></li><li><p><span>Else:</span></p><ul><li><span>Start a new cluster and set it as the current cluster.</span></li><li><span>Add the target column as a stitch column to this cluster.</span></li><li><span>Add feature to current cluster.</span></li></ul></li></ul></li><li><p><span>The first cluster is the initial cluster, the rest are derived clusters which are stitched by the target column.</span></p></li><li><p><span>If patching is enabled:</span></p><ul><li><p><span>For each non-feature column:</span></p><ul><li><span>Add derived cluster with no stitch column and the single derived column </span><code>[column]</code><span>.</span></li></ul></li></ul></li><li><p><span>Return clusters.</span></p></li></ul><p><span>In other words, we chunk the k-features by a max size. The target column is present in each one.</span>
+<span>We optionally patch the non-feature columns to get a complete table.</span></p><h3 id='noise'><span>Noise</span></h3><p><span>Noise is added to entity and row counts using an RNG seeded deterministically from the bucket&#39;s contents.</span>
+<span>This ensures identical output for the same data in different runs.</span></p><p><span>Entity threshold checks use a single noise layer that is seeded with the hash value of the PIDs included in the</span>
+<span>respective bucket.</span></p><p><span>Row counts have two noise layers: one seeded with the hash value of the PIDs present in the bucket and one seeded</span>
+<span>with the hash of the bucket&#39;s labels and columns (the column names in each tree make up the base seed of the tree and,</span>
+<span>for each bucket, the labels are made up from the middle-points of the bucket&#39;s ranges).</span>
+<span>Then, the regular </span><a href='https://arxiv.org/abs/2201.04351'><span>Diffix count anonymizer</span></a><span> runs.</span></p><h2 id='more-information'><span>More information</span></h2><p><span>A description of SynDiffix, its privacy properties, and its performance measured over a variety of datasets can be found at</span>
+<a href='https://github.com/diffix/syndiffix/wiki/SynDiffix:-Overview'><span>https://github.com/diffix/syndiffix/wiki/SynDiffix:-Overview</span></a><span>.</span></p></div></div>
+</body>
+</html>

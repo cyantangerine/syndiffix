@@ -98,10 +98,17 @@ class Synthesizer(object):
         )
 
         self.clusters, self.entropy_1dim = clustering.build_clusters(self.forest)
+
+        # 这里已经选完了一个组，self.clusters.initial_clu 就是了
+
+        # 为什么这里要对已经丢弃了的还convert?
+        # 对于real是pass的
         for col_id, converter in enumerate(self.column_convertors):
             converter.analyze_tree(self.forest.get_tree((ColumnId(col_id),)))
 
     def sample(self) -> pd.DataFrame:
+
+        # 此处替换为ctgan
         def materialize_tree(forest: Forest, columns: list[ColumnId]) -> tuple[list[MicrodataRow], Combination]:
             combination = tuple(sorted(columns))
             tree = forest.get_tree(combination)
